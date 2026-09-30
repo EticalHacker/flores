@@ -1,0 +1,172 @@
+:root{
+  --ink: #4a3b1f;
+  --paper: #fbf3dd;
+  --gold: #c9922e;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 20%, #fffdf6 0%, #f4ecd8 55%, #ece0c2 100%);
+  font-family: "Quicksand", sans-serif;
+  padding: 32px 16px;
+}
+
+.stage{ width: 100%; display:flex; justify-content:center; }
+
+.card{
+  width: min(640px, 100%);
+  background: #fffefb;
+  border-radius: 28px;
+  padding: 28px 28px 26px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.8) inset,
+    0 20px 45px -20px rgba(120, 90, 30, 0.35);
+  text-align: center;
+}
+
+#bouquet{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+}
+
+.caption-wrap{ margin-top: 14px; }
+
+.caption{
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--ink);
+}
+
+.subcaption{
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+  color: #9a875f;
+}
+
+#replay-btn{
+  margin-top: 18px;
+  border: none;
+  cursor: pointer;
+  padding: 10px 26px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #5b4419;
+  background: linear-gradient(180deg, #ffe9a8, #f6cf6e);
+  box-shadow: 0 8px 18px -8px rgba(201, 146, 46, 0.7);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+#replay-btn:hover{ transform: translateY(-2px); box-shadow: 0 12px 20px -8px rgba(201, 146, 46, 0.8); }
+#replay-btn:active{ transform: translateY(0); }
+#replay-btn:focus-visible{ outline: 3px solid #8a5620; outline-offset: 3px; }
+
+.stem{
+  fill: none;
+  stroke: url(#stem-grad);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: stemGrow 1.15s ease-out forwards;
+  animation-delay: calc(var(--i) * 0.32s);
+}
+
+@keyframes stemGrow{
+  to{ stroke-dashoffset: 0; }
+}
+
+.leaf-shape{
+  fill: #4a9a3f;
+  transform-origin: 0px 0px;
+  transform: scale(0);
+  opacity: 0;
+  animation: leafGrow 0.6s cubic-bezier(.3,1.4,.6,1) forwards;
+  animation-delay: calc(var(--i) * 0.32s + 0.5s + var(--li) * 0.18s);
+}
+
+@keyframes leafGrow{
+  0%{ transform: scale(0) rotate(-15deg); opacity: 0; }
+  100%{ transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.leaf-vein{
+  stroke: #2f6b2a;
+  stroke-width: 1.4;
+  opacity: 0;
+  animation: leafGrow 0.6s cubic-bezier(.3,1.4,.6,1) forwards;
+  animation-delay: calc(var(--i) * 0.32s + 0.5s + var(--li) * 0.18s);
+}
+
+.petal{
+  transform-origin: 0px 0px;
+  transform: scale(0);
+  opacity: 0;
+  animation: petalBloom 0.55s cubic-bezier(.32,1.5,.55,1) forwards;
+  stroke: rgba(150, 95, 0, 0.25);
+  stroke-width: 0.006;
+}
+
+.petal.back{
+  animation-delay: calc(var(--i) * 0.32s + 1.05s + var(--pd) * 0.07s);
+}
+.petal.front{
+  animation-delay: calc(var(--i) * 0.32s + 1.4s + var(--pd) * 0.07s);
+}
+
+@keyframes petalBloom{
+  0%{ transform: scale(0) rotate(-30deg); opacity: 0; }
+  100%{ transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.petal-blotch{
+  fill: rgba(93, 58, 11, 0.55);
+  opacity: 0;
+  animation: blotchFade 0.35s ease-out forwards;
+  animation-delay: calc(var(--i) * 0.32s + 1.7s + var(--pd) * 0.07s);
+}
+@keyframes blotchFade{ to{ opacity: 1; } }
+
+.flower{
+  transform-origin: 400px 690px;
+  animation: sway 5.5s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * 0.32s + 2.35s);
+}
+
+@keyframes sway{
+  from{ transform: rotate(-1.1deg); }
+  to{ transform: rotate(1.1deg); }
+}
+
+.ribbon{
+  transform-origin: 400px 690px;
+  transform: scale(0.75);
+  opacity: 0;
+  animation: ribbonIn 0.7s cubic-bezier(.3,1.4,.55,1) forwards;
+}
+
+@keyframes ribbonIn{
+  to{ transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .stem, .leaf-shape, .petal, .flower-center, .center-dot, .flower, .ribbon{
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+  }
+}

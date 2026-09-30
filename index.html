@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ramo de Tulipanes Amarillos</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌷</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="stage">
+  <div class="card">
+
+    <svg id="bouquet" viewBox="0 -90 800 850" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración animada de un ramo de tulipanes amarillos">
+      <defs>
+        <path id="leaf-shape" d="M0,0 Q -0.16,-0.52 0,-1 Q 0.16,-0.52 0,0 Z"/>
+
+        <path id="tulip-petal" d="M0,0
+          C -0.3,-0.16 -0.44,-0.55 -0.24,-0.84
+          C -0.12,-1.02 0.12,-1.02 0.24,-0.84
+          C 0.44,-0.55 0.3,-0.16 0,0 Z"/>
+
+        <linearGradient id="stem-grad" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%"  stop-color="#2E6B30"/>
+          <stop offset="100%" stop-color="#57A24C"/>
+        </linearGradient>
+
+        <radialGradient id="bg-glow" cx="50%" cy="38%" r="65%">
+          <stop offset="0%" stop-color="#FFFCF2"/>
+          <stop offset="100%" stop-color="#FBF3DD"/>
+        </radialGradient>
+      </defs>
+
+      <rect x="0" y="-90" width="800" height="850" fill="url(#bg-glow)"/>
+
+      <g id="scene"></g>
+    </svg>
+
+    <div class="caption-wrap">
+      <p class="caption">flores amarillas</p>
+      <p class="subcaption">att. yo, Paul</p>
+    </div>
+
+    <button id="replay-btn" type="button" aria-label="Repetir animación">
+      <span>Repetir</span>
+    </button>
+
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
